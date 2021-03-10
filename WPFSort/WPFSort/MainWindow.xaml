@@ -1,0 +1,99 @@
+﻿<Window x:Class="WPFSort.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFSort"
+        mc:Ignorable="d"
+        Title="检修车间落成车照片整理-WPF" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="360*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"></RowDefinition>
+                    <RowDefinition Height="3*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <ListView Grid.Row="0" Name="numberList" SelectionChanged="numberList_SelectionChanged">
+                    <ListViewItem Height="50" >1111</ListViewItem>
+                    <ListViewItem Height="50" >1111</ListViewItem>
+                    <ListViewItem Height="50" >1111</ListViewItem>
+                    <ListViewItem Height="50" >1111</ListViewItem>
+                    <ListViewItem Height="50" >1111</ListViewItem>
+                   
+                   
+                </ListView>
+
+                <Grid Grid.Row="1" >
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    
+                    <TextBox Grid.Row="0" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True">hi</TextBox>
+                    <Button Grid.Row="1" >
+                        输入车号
+                    </Button>
+                </Grid>
+
+            </Grid>
+            
+            
+            
+           
+        </Grid>
+
+        <Grid Grid.Column="1" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <UniformGrid Grid.Row="0">
+                    <Image Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2423.JPG"></Image>
+                    <Image Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2424.JPG"></Image>
+                    <Image Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2425.JPG"></Image>
+                    <Image Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2426.JPG"></Image>
+                    <Image Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2431.JPG"></Image>
+                    <Image Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2428.JPG"></Image>
+                    <Image Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2429.JPG"></Image>
+                    <Image Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2432.JPG"></Image>
+                    <Image Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2423.JPG"></Image>
+                    <Image Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2424.JPG"></Image>
+                    <Image Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2425.JPG"></Image>
+                    <Image Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2426.JPG"></Image>
+                    <Image Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2423.JPG"></Image>
+                    <Image Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2424.JPG"></Image>
+                </UniformGrid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100*"></ColumnDefinition>
+                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto"  VerticalScrollBarVisibility="Hidden">
+                        <StackPanel Grid.Column="0" Orientation="Horizontal" Height="100px">
+                            <Image  Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2424.JPG"></Image>
+                            <Image Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2424.JPG"></Image>
+                            <Image Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2424.JPG"></Image>
+                            <Image Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2424.JPG"></Image>
+                            <Image  Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2424.JPG"></Image>
+                            <Image Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2424.JPG"></Image>
+                            <Image  Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2424.JPG"></Image>
+                        </StackPanel>
+                    </ScrollViewer>
+                    <Grid Grid.Column="1">
+                        <Button>加入两张</Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

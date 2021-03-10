@@ -1,0 +1,15 @@
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\WPFSort\bin\Debug\WPFSort.exe.config
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\WPFSort\bin\Debug\WPFSort.exe
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\WPFSort\bin\Debug\WPFSort.pdb
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\WPFSort\obj\Debug\WPFSort.csprojAssemblyReference.cache
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\WPFSort\obj\Debug\MainWindow.g.cs
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\WPFSort\obj\Debug\App.g.cs
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\WPFSort\obj\Debug\WPFSort_MarkupCompile.cache
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\WPFSort\obj\Debug\WPFSort_MarkupCompile.lref
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\WPFSort\obj\Debug\MainWindow.baml
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\WPFSort\obj\Debug\WPFSort.g.resources
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\WPFSort\obj\Debug\WPFSort.Properties.Resources.resources
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\WPFSort\obj\Debug\WPFSort.csproj.GenerateResource.cache
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\WPFSort\obj\Debug\WPFSort.csproj.CoreCompileInputs.cache
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\WPFSort\obj\Debug\WPFSort.exe
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\WPFSort\obj\Debug\WPFSort.pdb
