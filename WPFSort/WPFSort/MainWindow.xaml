@@ -20,12 +20,16 @@
                     <RowDefinition Height="3*"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <ListView Grid.Row="0" Name="numberList" SelectionChanged="numberList_SelectionChanged">
-                    <ListViewItem Height="50" >绑定粘贴</ListViewItem>
-                    <ListViewItem Height="50" >过来的车号</ListViewItem>
-                    <ListViewItem Height="50" >1111</ListViewItem>
-                    <ListViewItem Height="50" >1111</ListViewItem>
-                    <ListViewItem Height="50" >1111</ListViewItem>
+                <ListView x:Name="numberList" Grid.Row="0" SelectionChanged="numberList_SelectionChanged" >
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="IsSelected" Value="True"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListView.ItemContainerStyle>
                 </ListView>
 
                 <Grid Grid.Row="1" >
@@ -53,8 +57,9 @@
                     <RowDefinition Height="3*"></RowDefinition>
                     <RowDefinition Height="1*"></RowDefinition>
                 </Grid.RowDefinitions>
-
-                <UniformGrid Grid.Row="0">
+                
+                    <UniformGrid Grid.Row="0">
+                    
                     <Image Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2423.JPG"></Image>
                     <Image Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2424.JPG"></Image>
                     <Image Margin="5,5,5,5" Source="C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\Pre/1518515/IMG_2425.JPG"></Image>
@@ -87,7 +92,7 @@
                         </StackPanel>
                     </ScrollViewer>
                     <Grid Grid.Column="1">
-                        <Button >加入两张</Button>
+                        <Button x:Name="JoinNDel" Click="JoinNDel_Click">加入两张</Button>
                     </Grid>
                 </Grid>
             </Grid>

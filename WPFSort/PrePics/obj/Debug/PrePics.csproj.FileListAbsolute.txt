@@ -1,0 +1,10 @@
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\PrePics\bin\Debug\PrePics.exe.config
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\PrePics\bin\Debug\PrePics.exe
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\PrePics\bin\Debug\PrePics.pdb
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\PrePics\obj\Debug\PrePics.csprojAssemblyReference.cache
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\PrePics\obj\Debug\PrePics.Form1.resources
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\PrePics\obj\Debug\PrePics.Properties.Resources.resources
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\PrePics\obj\Debug\PrePics.csproj.GenerateResource.cache
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\PrePics\obj\Debug\PrePics.csproj.CoreCompileInputs.cache
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\PrePics\obj\Debug\PrePics.exe
+C:\Users\SANG-HP\Documents\GitHub\TrainPicSortApp\WPFSort\PrePics\obj\Debug\PrePics.pdb
