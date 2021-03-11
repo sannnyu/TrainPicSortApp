@@ -37,6 +37,25 @@ namespace WPFSort
             //Image image = new Image(new Uri(""));
             
         }
-        
+
+        private void GenBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //读取车号
+            string vehicleArray = this.textBox1.Text;
+            List<string> va = vehicleArray.Split(new char[] { '\r', '\n' },StringSplitOptions.RemoveEmptyEntries).ToList();
+
+            //将车号逐个添加到ListView
+
+            //将ListViewItem车号作为字典，对应
+            //Dictionary<int, List<string>> vehicleSingle = new Dictionary<int, List<string>>();
+            //使用Dictionary对应文件名
+
+
+            //ListViewItem写一个事件，点一下就换到这边来。
+
+            //并且显示图片，动态加载Image
+        }
+
+        //加入两张的功能
     }
 }

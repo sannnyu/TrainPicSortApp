@@ -21,33 +21,30 @@
                 </Grid.RowDefinitions>
 
                 <ListView Grid.Row="0" Name="numberList" SelectionChanged="numberList_SelectionChanged">
+                    <ListViewItem Height="50" >绑定粘贴</ListViewItem>
+                    <ListViewItem Height="50" >过来的车号</ListViewItem>
                     <ListViewItem Height="50" >1111</ListViewItem>
                     <ListViewItem Height="50" >1111</ListViewItem>
                     <ListViewItem Height="50" >1111</ListViewItem>
-                    <ListViewItem Height="50" >1111</ListViewItem>
-                    <ListViewItem Height="50" >1111</ListViewItem>
-                   
-                   
                 </ListView>
 
                 <Grid Grid.Row="1" >
-
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2*"></RowDefinition>
                         <RowDefinition Height="1*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    
-                    <TextBox Grid.Row="0" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True">hi</TextBox>
-                    <Button Grid.Row="1" >
-                        输入车号
+
+                    <TextBox Name="textBox1" Grid.Row="0" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True"></TextBox>
+                    <Button Click="GenBtn_Click" Grid.Row="1" >
+                        读取车号（这里要改两个状态，为空时显示粘贴车号）
                     </Button>
                 </Grid>
 
             </Grid>
-            
-            
-            
-           
+
+
+
+
         </Grid>
 
         <Grid Grid.Column="1" >
@@ -90,7 +87,7 @@
                         </StackPanel>
                     </ScrollViewer>
                     <Grid Grid.Column="1">
-                        <Button>加入两张</Button>
+                        <Button >加入两张</Button>
                     </Grid>
                 </Grid>
             </Grid>
