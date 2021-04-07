@@ -50,6 +50,7 @@ namespace PrePics
                     {
                         listBox3.Items.Clear();
                         listBox3.Items.AddRange(PicArray[i + 1].ToArray());
+                        listBox3.SelectedIndex = 0;
                     }
 
                 }
@@ -81,7 +82,8 @@ namespace PrePics
 
                 listBox3.Items.RemoveAt(listBox3.SelectedIndex);
                 listBox3.Items.RemoveAt(listBox3.SelectedIndex + 1);
-                listBox3.SelectedIndex = 0;
+                if(listBox3.Items.Count>0)
+                    listBox3.SelectedIndex = 0;
 
 
             }
@@ -145,6 +147,7 @@ namespace PrePics
             for (int j = 0; j < 9; j++)
             {
                 PicsArray.Add(new List<string>());
+          
                 for (int i = 0; i < 14; i++)
                 {
                     PicsArray[j].Add(Pics[i + j * 14]);
@@ -168,8 +171,10 @@ namespace PrePics
             if (listBox1.SelectedItem != null)
             {
                 listBox2.Items.AddRange(vehicleDictionary[listBox1.SelectedItem.ToString()].ToArray());
+                
             }
-
+            if (listBox2.Items.Count != 0)
+                listBox2.SelectedIndex = 0;
 
         }
 
@@ -208,14 +213,25 @@ namespace PrePics
             System.Diagnostics.Process.Start("explorer.exe", Environment.CurrentDirectory);
         }
 
-        private void listBox1_DoubleClick(object sender, EventArgs e)
+        
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (listBox1.SelectedItem != null)
+            switch (e.KeyCode)
             {
-                System.Diagnostics.Process.Start("explorer.exe", Environment.CurrentDirectory + "\\Pre\\" + listBox1.SelectedItem.ToString());
+                case Keys.A:
+                    button2_Click(this, EventArgs.Empty);
+                    break;
 
+                case Keys.Escape:
+                    Application.Exit();
+                    break;
             }
+        }
 
+        private void Form1_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            MessageBox.Show("使用方法：请查看使用视频");
         }
     }
 }

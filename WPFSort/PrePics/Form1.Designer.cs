@@ -46,6 +46,7 @@ namespace PrePics
             this.label5 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,7 +61,6 @@ namespace PrePics
             this.listBox1.Size = new System.Drawing.Size(179, 292);
             this.listBox1.TabIndex = 0;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
             // 
             // button1
             // 
@@ -115,11 +115,11 @@ namespace PrePics
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(610, 343);
+            this.button2.Location = new System.Drawing.Point(200, 343);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(178, 64);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Step2.加入两张到当前文件夹";
+            this.button2.Text = "Step2.加入两张到当前文件夹（快捷键A）";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -128,40 +128,40 @@ namespace PrePics
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(609, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 15);
+            this.label1.Size = new System.Drawing.Size(150, 15);
             this.label1.TabIndex = 3;
-            this.label1.Text = "待加入的地板照片";
+            this.label1.Text = "④ 待加入的地板照片";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(383, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(187, 15);
+            this.label2.Size = new System.Drawing.Size(210, 15);
             this.label2.TabIndex = 3;
-            this.label2.Text = "准备分进当前文件夹的照片";
+            this.label2.Text = "③ 准备分进当前文件夹的照片";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 12);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 15);
+            this.label3.Size = new System.Drawing.Size(105, 15);
             this.label3.TabIndex = 3;
-            this.label3.Text = "粘贴进车号";
+            this.label3.Text = "① 粘贴进车号";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(194, 12);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(127, 15);
+            this.label4.Size = new System.Drawing.Size(150, 15);
             this.label4.TabIndex = 3;
-            this.label4.Text = "准备生成的文件夹";
+            this.label4.Text = "② 准备生成的文件夹";
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(384, 343);
+            this.button3.Location = new System.Drawing.Point(609, 343);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(178, 64);
             this.button3.TabIndex = 1;
@@ -171,11 +171,11 @@ namespace PrePics
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(198, 343);
+            this.button4.Location = new System.Drawing.Point(384, 343);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(178, 64);
             this.button4.TabIndex = 1;
-            this.button4.Text = "Step3.应用";
+            this.button4.Text = "Step3.应用\r\n（按下ESC退出程序）";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -214,6 +214,15 @@ namespace PrePics
             this.textBox2.Size = new System.Drawing.Size(191, 64);
             this.textBox2.TabIndex = 5;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(807, 12);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(67, 15);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "预览照片";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -225,6 +234,7 @@ namespace PrePics
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button2);
@@ -236,9 +246,14 @@ namespace PrePics
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
+            this.HelpButton = true;
+            this.KeyPreview = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
-            this.TopMost = true;
+            this.Text = "检修车间车号照片归档程序";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Form1_HelpButtonClicked);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -264,6 +279,7 @@ namespace PrePics
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label6;
     }
 }
 
