@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFSort", "WPFSort\WPFSort.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrePics", "PrePics\PrePics.csproj", "{8C4A2246-FE9E-46D0-BF75-DC4DD2DB11EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{B6BFBCF3-0FBB-4C88-B878-1B3E2F6C1D4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8C4A2246-FE9E-46D0-BF75-DC4DD2DB11EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C4A2246-FE9E-46D0-BF75-DC4DD2DB11EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C4A2246-FE9E-46D0-BF75-DC4DD2DB11EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6BFBCF3-0FBB-4C88-B878-1B3E2F6C1D4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6BFBCF3-0FBB-4C88-B878-1B3E2F6C1D4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6BFBCF3-0FBB-4C88-B878-1B3E2F6C1D4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6BFBCF3-0FBB-4C88-B878-1B3E2F6C1D4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

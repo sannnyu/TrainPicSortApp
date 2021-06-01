@@ -29,7 +29,6 @@ namespace PrePics
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
@@ -47,20 +46,10 @@ namespace PrePics
             this.button5 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.isAfter = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // listBox1
-            // 
-            this.listBox1.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 18;
-            this.listBox1.Location = new System.Drawing.Point(197, 38);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.ScrollAlwaysVisible = true;
-            this.listBox1.Size = new System.Drawing.Size(179, 292);
-            this.listBox1.TabIndex = 0;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -68,16 +57,16 @@ namespace PrePics
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(178, 64);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Step1.粘贴好了";
+            this.button1.Text = "Read";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(13, 38);
+            this.textBox1.Location = new System.Drawing.Point(13, 46);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(178, 292);
+            this.textBox1.Size = new System.Drawing.Size(178, 284);
             this.textBox1.TabIndex = 2;
             // 
             // listBox2
@@ -115,11 +104,12 @@ namespace PrePics
             // 
             // button2
             // 
+            this.button2.Enabled = false;
             this.button2.Location = new System.Drawing.Point(200, 343);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(178, 64);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Step2.加入两张到当前文件夹（快捷键A）";
+            this.button2.Text = "状态更改，重新读取";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -171,11 +161,12 @@ namespace PrePics
             // 
             // button4
             // 
+            this.button4.Enabled = false;
             this.button4.Location = new System.Drawing.Point(384, 343);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(178, 64);
             this.button4.TabIndex = 1;
-            this.button4.Text = "Step3.应用\r\n（按下ESC退出程序）";
+            this.button4.Text = "应用";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -223,11 +214,37 @@ namespace PrePics
             this.label6.TabIndex = 3;
             this.label6.Text = "预览照片";
             // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.Enabled = false;
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(197, 46);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.ScrollAlwaysVisible = true;
+            this.checkedListBox1.Size = new System.Drawing.Size(178, 284);
+            this.checkedListBox1.TabIndex = 6;
+            this.checkedListBox1.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBox1_ItemCheck);
+            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+            // 
+            // isAfter
+            // 
+            this.isAfter.AutoSize = true;
+            this.isAfter.Checked = true;
+            this.isAfter.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.isAfter.Location = new System.Drawing.Point(15, 419);
+            this.isAfter.Name = "isAfter";
+            this.isAfter.Size = new System.Drawing.Size(89, 19);
+            this.isAfter.TabIndex = 7;
+            this.isAfter.Text = "照片后置";
+            this.isAfter.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1013, 475);
+            this.Controls.Add(this.isAfter);
+            this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label4);
@@ -245,13 +262,11 @@ namespace PrePics
             this.Controls.Add(this.listBox4);
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.listBox1);
-            this.HelpButton = true;
             this.KeyPreview = true;
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "检修车间车号照片归档程序";
+            this.TopMost = true;
             this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Form1_HelpButtonClicked);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -261,8 +276,6 @@ namespace PrePics
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ListBox listBox2;
@@ -280,6 +293,8 @@ namespace PrePics
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckBox isAfter;
     }
 }
 

@@ -13,9 +13,18 @@ namespace PrePics
 {
     public partial class Form1 : Form
     {
-        public Dictionary<string, List<string>> vehicleDictionary = new Dictionary<string, List<string>>();
+        public Dictionary<string, List<string>> vehicleSpiltsDictionary = new Dictionary<string, List<string>>();
+        public List<int> count4Spilt = new List<int>();
         public string path = "./Pre";
+        public class SingleVehicle
+        {
+            public string Number { get; set; }
+            public bool TypeC { get; set; }
+            public List<string> Pics { get; set; } = new List<string>();
+            public int Amount { get; set; } = 14;
 
+        }
+        public List<SingleVehicle> vehiclesList = new List<SingleVehicle>();
         public Form1()
         {
             InitializeComponent();
@@ -28,36 +37,146 @@ namespace PrePics
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-            textBox2.Text= "SortedPics" + string.Format("{0:D}", DateTime.Now);
+            checkedListBox1.Items.Clear();
+            button4.Enabled = true;
+            checkedListBox1.Enabled = true;
+            isAfter.Enabled = false;
+
+
+            //按照片数量分割出照片档位
+            //新建文件夹
+            //textBox2.Text = "SortedPics" + string.Format("{0:D}", DateTime.Now);
             if (string.IsNullOrEmpty(this.textBox1.Text))
             {
+                MessageBox.Show("啥都没有！！");
                 return;
             }
             string vehicleArray = this.textBox1.Text;
-            List<string> va = vehicleArray.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries).ToList();
-            listBox1.Items.AddRange(va.ToArray());
-
-            //读取本地文件
-            //生成虚拟目录
-            //加1是为多余照片准备
-            for (int i = 0; i < va.Count; i++)
+            //得出车号的List
+            /*
+            | 车号（举例）  |
+            | ------- |
+            | 3315676 |
+            | 3467947 |
+            | 1660172 |
+            | 3422879 |
+            | 3422887 |
+            | 3467827 |
+            | 5498405 |
+            | 3428638 |
+            | 5497681 |
+             */
+            List<string> VPlan = vehicleArray.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            //建立车模型
+            foreach (var planNum in VPlan)
             {
-                List<List<string>> PicArray = ReadPic();//返回所有照片集合
-                vehicleDictionary.Add(va[i], PicArray[i]);
-                if (i == va.Count - 1)
+                if (planNum.Substring(0, 1) == "1" || planNum.Substring(0, 1) == "4")
                 {
-                    if (PicArray.Count - i >= 1)
-                    {
-                        listBox3.Items.Clear();
-                        listBox3.Items.AddRange(PicArray[i + 1].ToArray());
-                        listBox3.SelectedIndex = 0;
-                    }
+                    vehiclesList.Add(new SingleVehicle { Number = planNum, TypeC = true, Amount = 12 });
 
+                }
+                else
+                {
+                    vehiclesList.Add(new SingleVehicle { Number = planNum, TypeC = false, Amount = 14 });
                 }
             }
 
-            listBox1.SelectedIndex = 0;
-            listBox2.SelectedIndex = 0;
+            //将照片加载到Pics集合
+            List<string> Pics = new List<string>();
+            DirectoryInfo folder = new DirectoryInfo(path);//目录信息
+            foreach (FileInfo file in folder.GetFiles())
+            {
+                Pics.Add(file.Name);//读取文件名
+            }
+
+            //将照片加入到车Model中
+            //计算有多少TypeC的车
+            int AmountOfTypeC = vehiclesList.Where(x => x.TypeC == true).Count();
+           
+            if (isAfter.Checked == true)//是否后置
+            {
+                for (int i = 0; i < vehiclesList.Count; i++)
+                {
+                    
+                    vehiclesList[i].Pics.AddRange(Pics.GetRange(0, vehiclesList[i].Amount));
+                    Pics.RemoveRange(0, vehiclesList[i].Amount);
+                }
+                //剩下的放进那两个车里
+                foreach (var item in vehiclesList.Where(x => x.TypeC == true))
+                {
+                    item.Pics.AddRange(Pics.GetRange(0, 2));
+                    Pics.RemoveRange(0, 2);
+                }
+                if(Pics.Count>0)
+                {
+                    MessageBox.Show("咋多出_" + Pics.Count+ "_张照片");
+                }
+            }
+            else
+            {
+                //pics的起始位改为Pics[AmountOfTypeC*2]
+                List<string> rest = Pics.GetRange(0, AmountOfTypeC * 2);
+                Pics.RemoveRange(0, AmountOfTypeC * 2);
+                //挨个放进去
+                for (int i = 0; i < vehiclesList.Count; i++)
+                {
+
+                    vehiclesList[i].Pics.AddRange(Pics.GetRange(0, vehiclesList[i].Amount));
+                    Pics.RemoveRange(0, vehiclesList[i].Amount);
+                }
+                //剩下的放进那两个车里
+                foreach (var item in vehiclesList.Where(x => x.TypeC == true))
+                {
+                    item.Pics.AddRange(rest.GetRange(0, 2));
+                    rest.RemoveRange(0, 2);
+                }
+                if (Pics.Count > 0)
+                {
+                    MessageBox.Show("咋多出_" + Pics.Count + "_张照片");
+                }
+
+            }
+
+            //加入完毕现在要显示了
+            foreach (var item in vehiclesList)
+            {
+                checkedListBox1.Items.Add(item.Number, item.TypeC);
+            }
+
+            //按照用户显示的数分割照片
+            //读取本地文件
+            /*
+            | 车号（举例）  |
+            | ------- |
+            | IMG_3422887.JPG |
+            | IMG_4678271.JPG |
+            | IMG_5498405.JPG |
+            | IMG_3428638.JPG |
+            | IMG_5497681.JPG |
+             */
+            /*
+            
+
+            
+
+            //剩下的照片集合
+            var RestPics = Pics.GetRange(count4Spilt.Sum(), Pics.Count - count4Spilt.Sum());
+
+            //自动将余下照片加入到虚拟目录集合
+            //如果用户觉得不对，还要调整
+            for (int i = 0; i < count4Spilt.Count; i++)
+            {
+                if(count4Spilt[i]==12)
+                {
+                    vehicleDictionary[VPlan[i]].Add(RestPics[0]);
+                    vehicleDictionary[VPlan[i]].Add(RestPics[1]);
+                }
+                
+
+            }
+
+            */
+
 
 
         }
@@ -69,20 +188,26 @@ namespace PrePics
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            if (listBox3.Items.Count > 1 && listBox1.SelectedItem != null)
+
+
+
+
+
+
+            if (listBox3.Items.Count > 1 && checkedListBox1.SelectedItem != null)
             {
                 string file_0 = listBox3.SelectedItem.ToString();
                 string file_1 = listBox3.Items[listBox3.SelectedIndex + 1].ToString();
-                string currentFolder = listBox1.SelectedItem.ToString();
-                vehicleDictionary[currentFolder].Add(file_0);
-                vehicleDictionary[currentFolder].Add(file_1);
+                string currentFolder = checkedListBox1.SelectedItem.ToString();
+                vehicleSpiltsDictionary[currentFolder].Add(file_0);
+                vehicleSpiltsDictionary[currentFolder].Add(file_1);
 
                 listBox2.Items.Clear();
-                listBox2.Items.AddRange(vehicleDictionary[currentFolder].ToArray());
+                listBox2.Items.AddRange(vehicleSpiltsDictionary[currentFolder].ToArray());
 
                 listBox3.Items.RemoveAt(listBox3.SelectedIndex);
                 listBox3.Items.RemoveAt(listBox3.SelectedIndex + 1);
-                if(listBox3.Items.Count>0)
+                if (listBox3.Items.Count > 0)
                     listBox3.SelectedIndex = 0;
 
 
@@ -100,7 +225,7 @@ namespace PrePics
         /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
-
+            //此功能正在开发
         }
 
         /// <summary>
@@ -111,17 +236,17 @@ namespace PrePics
         private void button4_Click(object sender, EventArgs e)
         {
             pictureBox1.Image = null;
-            foreach (var item in vehicleDictionary)
+            foreach (var item in vehiclesList)
             {
-                string folder = "./Pre/" + item.Key;
+                string folder = "./Pre/" + item.Number;
                 if (false == Directory.Exists(folder))
                 {
                     //创建pic文件夹
                     Directory.CreateDirectory(folder);
                 }
-                foreach (var picFile in vehicleDictionary[item.Key])
+                foreach (var picFile in item.Pics)
                 {
-                    File.Copy("./Pre/" + picFile, folder + "/" + picFile);
+                    File.Move("./Pre/" + picFile, folder + "/" + picFile);
                 }
 
             }
@@ -130,11 +255,13 @@ namespace PrePics
 
         }
 
-
+        //传入车号
         public List<List<string>> ReadPic()
         {
             List<List<string>> PicsArray = new List<List<string>>();
             List<string> Pics = new List<string>();
+
+
             //读取文件名
             DirectoryInfo folder = new DirectoryInfo(path);//目录信息
             foreach (FileInfo file in folder.GetFiles())
@@ -142,12 +269,15 @@ namespace PrePics
                 Pics.Add(file.Name); //获取每个文件的所有信息
             }
 
-            //只弄9个车
-            //1-14、15-28...一次类推加入Dictionary
+
+            //按传进车号Count进行for循环
+
+
+            //1-14、15-28...以此类推加入Dictionary
             for (int j = 0; j < 9; j++)
             {
                 PicsArray.Add(new List<string>());
-          
+
                 for (int i = 0; i < 14; i++)
                 {
                     PicsArray[j].Add(Pics[i + j * 14]);
@@ -165,13 +295,14 @@ namespace PrePics
 
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Reavl切换
             listBox2.Items.Clear();
-            if (listBox1.SelectedItem != null)
+            if (checkedListBox1.SelectedItem != null)
             {
-                listBox2.Items.AddRange(vehicleDictionary[listBox1.SelectedItem.ToString()].ToArray());
-                
+                listBox2.Items.AddRange(vehiclesList.Single(x=>x.Number==checkedListBox1.SelectedItem.ToString()).Pics.ToArray());
+
             }
             if (listBox2.Items.Count != 0)
                 listBox2.SelectedIndex = 0;
@@ -183,7 +314,9 @@ namespace PrePics
         /// </summary>
         public void Reveal(string fileName)
         {
-            pictureBox1.Image = Image.FromFile("./Pre/" + fileName);
+            //pictureBox1.Image = Image.FromFile("./Pre/" + fileName);
+            pictureBox1.Image = new Bitmap("./Pre/" + fileName);
+
         }
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -213,7 +346,7 @@ namespace PrePics
             System.Diagnostics.Process.Start("explorer.exe", Environment.CurrentDirectory);
         }
 
-        
+
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -233,5 +366,19 @@ namespace PrePics
         {
             MessageBox.Show("使用方法：请查看使用视频");
         }
+
+        private void checkedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+
+            //更新数据集合
+            if (checkedListBox1.Items.Count >= 9)
+            {
+                button2.Enabled = true;
+            }
+
+
+
+        }
+
     }
 }
